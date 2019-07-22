@@ -1,0 +1,84 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Func_MergeAllResults" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArgI_TenpayOutputFd" Type="InArgument(x:String)" />
+    <x:Property Name="ArgI_TencentOutputFd" Type="InArgument(x:String)" />
+    <x:Property Name="ArgI_WechatOutputFd" Type="InArgument(x:String)" />
+    <x:Property Name="ArgI_AlipayOutputFd" Type="InArgument(x:String)" />
+    <x:Property Name="Argl_FinalOutputFd" Type="InArgument(x:String)" />
+    <x:Property Name="StartDate" Type="InArgument(x:String)" />
+    <x:Property Name="EndDate" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>332.8,475.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Func_MergeAllResults_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Func_MergeAllResults" sap:VirtualizedContainerService.HintSize="292.8,395.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Copy to final folder Sequence" sap:VirtualizedContainerService.HintSize="254.4,302.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:CopyFile ContinueOnError="True" Destination="[Argl_FinalOutputFd+&quot;/&quot;+path.GetFileNamewithoutextension(directory.GetFiles(ArgI_TenpayOutputFd)(0))+&quot;-&quot;+Startdate+&quot;-&quot;+EndDate+&quot;.xlsx&quot;]" DisplayName="Copy File ArgI_TenpayOutputFd" sap:VirtualizedContainerService.HintSize="216,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[directory.GetFiles(ArgI_TenpayOutputFd)(0)]" />
+      <ui:CopyFile ContinueOnError="True" Destination="[Argl_FinalOutputFd+&quot;/&quot;+path.GetFileNamewithoutextension(directory.GetFiles(ArgI_TencentOutputFd)(0))+&quot;-&quot;+Startdate+&quot;-&quot;+EndDate+&quot;.xlsx&quot;]" DisplayName="Copy File ArgI_TencentOutputFd" sap:VirtualizedContainerService.HintSize="216,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[directory.GetFiles(ArgI_TencentOutputFd)(0)]" />
+      <ui:CopyFile ContinueOnError="True" Destination="[Argl_FinalOutputFd+&quot;/&quot;+path.GetFileNamewithoutextension(directory.GetFiles(ArgI_WechatOutputFd)(0))+&quot;-&quot;+Startdate+&quot;-&quot;+EndDate+&quot;.xlsx&quot;]" DisplayName="Copy File ArgI_WechatOutputFd" sap:VirtualizedContainerService.HintSize="216,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[directory.GetFiles(ArgI_WechatOutputFd)(0)]" />
+      <ui:CopyFile ContinueOnError="True" Destination="[Argl_FinalOutputFd+&quot;/&quot;+path.GetFileNamewithoutextension(directory.GetFiles(ArgI_AlipayOutputFd)(0))+&quot;-&quot;+Startdate+&quot;-&quot;+EndDate+&quot;.xlsx&quot;]" DisplayName="Copy File ArgI_AlipayOutputFd" sap:VirtualizedContainerService.HintSize="216,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_4" Overwrite="True" Path="[directory.GetFiles(ArgI_AlipayOutputFd)(0)]" />
+    </Sequence>
+  </Sequence>
+</Activity>
